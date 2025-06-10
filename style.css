@@ -72,27 +72,35 @@ body{
     margin-top: 25px;
 }
 
-.task{
+.task {
     background-color: #f2f2f2;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    text-transform: capitalize;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 20px 15px;
     border-radius: 10px;
     margin-bottom: 20px;
-    cursor: pointer;
-    max-width: 100%;
-    overflow-wrap: break-word;
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: nowrap;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-.task p{
-    max-width: 100%;
+.task p {
+    flex: 1;
     word-break: break-word;
     overflow-wrap: break-word;
+    white-space: normal;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.task .icons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 24px;
 }
 
 .task:hover .img{
@@ -139,6 +147,7 @@ body{
 
 li i {
     transform: scale(1.4);
+    transition: color 2s ease-in-out;
 }
 
 .img{

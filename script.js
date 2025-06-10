@@ -57,3 +57,16 @@ input.addEventListener('keypress', function(event) {
         adicionarNovaTarefa()
     }
 })
+
+document.addEventListener("click", function(e) {
+    const el = e.target;
+
+    if (el.classList.contains("check")) {
+        const tarefa = el.closest(".task");
+        tarefa.classList.toggle("done");
+    }
+
+    if (el.classList.contains("delete")) {
+        el.closest(".task").remove();
+    }
+});
