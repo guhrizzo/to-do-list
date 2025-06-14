@@ -7,12 +7,21 @@ let mylist = []
 function adicionarNovaTarefa() {
     if (input.value.trim() === "") return;
 
+    const date = new Date(); 
+    const formattedDate = date.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
     mylist.push({
         tarefa: input.value,
+        data: formattedDate,
         concluida: false
-    })
-    mostrarTarefa()
-    input.value = ""
+    });
+
+    mostrarTarefa();
+    input.value = "";
 }
 
 function mostrarTarefa() {
@@ -20,9 +29,14 @@ function mostrarTarefa() {
     mylist.forEach((task, posicao) => {
         novaLi += `
         <li class="task ${task.concluida ? "done" : ""}">
-            <i class="bi bi-check-circle-fill img check ${task.concluida ? "checkwhite" : ""}" onclick="concluirTarefa(${posicao})"></i>
-            <p>${task.tarefa}</p>
-            <i class="bi bi-trash3-fill img delete" onclick="deletarItem(${posicao})"></i>
+            <div class="content">
+                <p>${task.tarefa}</p>
+                <small class="task-date check ${task.concluida ? "task-date-complete" : ""}">${task.data}</small>
+            </div>
+            <div class="icons">
+                <i class="bi bi-check-circle-fill img check ${task.concluida ? "checkwhite" : ""}" onclick="concluirTarefa(${posicao})"></i>
+                <i class="bi bi-trash3-fill img delete" onclick="deletarItem(${posicao})"></i>
+            </div>
         </li>
         `
     })
@@ -52,21 +66,8 @@ function recarregarTarefas() {
 recarregarTarefas()
 btn.addEventListener('click', adicionarNovaTarefa)
 
-input.addEventListener('keypress', function(event) {
+input.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         adicionarNovaTarefa()
     }
 })
-
-document.addEventListener("click", function(e) {
-    const el = e.target;
-
-    if (el.classList.contains("check")) {
-        const tarefa = el.closest(".task");
-        tarefa.classList.toggle("done");
-    }
-
-    if (el.classList.contains("delete")) {
-        el.closest(".task").remove();
-    }
-});

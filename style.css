@@ -105,6 +105,7 @@ body{
 
 .task:hover .img{
     opacity: 1;
+    cursor: pointer;
 }
 
 .container{
@@ -169,7 +170,17 @@ li i {
 
 .done{
     background-color: #32965D;
-    text-decoration: line-through;
+    color: #f2f2f2;
+}
+
+.task-date {
+    font-size: 14px;
+    color: #665;
+    display: block;
+    margin-top: 4px;
+}
+
+.task-date-complete{
     color: #f2f2f2;
 }
 
