@@ -25,24 +25,27 @@ function adicionarNovaTarefa() {
 }
 
 function mostrarTarefa() {
-    let novaLi = ""
+    let novaLi = "";
     mylist.forEach((task, posicao) => {
         novaLi += `
         <li class="task ${task.concluida ? "done" : ""}">
             <div class="content">
                 <p>${task.tarefa}</p>
-                <small class="task-date check ${task.concluida ? "task-date-complete" : ""}">${task.data}</small>
+                <small class="task-date ${task.concluida ? "task-date-complete" : ""}"">
+                    <i class="bi ${task.concluida ? "bi-calendar2-check-fill task-date-complete" : "bi-calendar2-fill"} calendar"></i>
+                    ${task.data}
+                </small>
             </div>
             <div class="icons">
                 <i class="bi bi-check-circle-fill img check ${task.concluida ? "checkwhite" : ""}" onclick="concluirTarefa(${posicao})"></i>
-                <i class="bi bi-trash3-fill img delete" onclick="deletarItem(${posicao})"></i>
+                <i class="bi bi-trash3-fill img ${task.concluida ? "deletewhite" : "delete"}" onclick="deletarItem(${posicao})"></i>
             </div>
         </li>
-        `
-    })
+        `;
+    });
 
-    listaCompleta.innerHTML = novaLi
-    localStorage.setItem('lista', JSON.stringify(mylist))
+    listaCompleta.innerHTML = novaLi;
+    localStorage.setItem('lista', JSON.stringify(mylist));
 }
 
 function concluirTarefa(posicao) {

@@ -94,6 +94,7 @@ body{
     white-space: normal;
     margin: 0;
     text-transform: capitalize;
+    font-weight: 500;
 }
 
 .task .icons {
@@ -151,11 +152,6 @@ li i {
     transition: color 2s ease-in-out;
 }
 
-.img{
-    transition: opacity .4s ease-in-out;
-    opacity: 0;
-}
-
 .check{
     color: green;
 }
@@ -164,8 +160,13 @@ li i {
     color: #f2f2f2;
 }
 
+.deletewhite{
+    color: #f2f2f2;
+}
+
 .delete{
     color: #AF1B3F;
+    transition: color 0.3s ease;
 }
 
 .done{
@@ -182,7 +183,19 @@ li i {
 
 .task-date-complete{
     color: #f2f2f2;
+    transition: color 0.3s ease;
 }
+
+.img{
+    transition: opacity .4s ease-in-out;
+    opacity: 0;
+}
+
+small.bi.bi-calendar2-fill.calendar.task-date.check::before{
+    padding-right: 5px;
+}
+
+
 
 @media only screen and (max-width: 600px) {
     body{
