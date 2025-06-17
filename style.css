@@ -35,13 +35,26 @@ body{
     filter: blur(1.5px);
 }
 
-.input-task{
-    border: none;
+.input-task {
+    resize: none; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    min-height: 45px;
+    max-height: 120px; 
+    padding: 12px 10px;
+    line-height: 1.4;
+    font-size: 16px;
     border-radius: 10px;
-    padding-left: 10px;
-    width: 100%;
-    max-width: 345px;
-    height: 40px;
+    border: none;
+    width: 75%;
+    box-sizing: border-box;
+}
+
+.input-task::placeholder{
+    font-size: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .button-add-task{
